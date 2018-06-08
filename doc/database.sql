@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2018 at 09:06 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 5.6.33
+-- Loomise aeg: Juuni 08, 2018 kell 12:33 PL
+-- Serveri versioon: 10.1.32-MariaDB
+-- PHP versioon: 7.2.5
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -14,125 +14,60 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
--- Database: `blog`
+-- Andmebaas: `blog`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Tabeli struktuur tabelile `posts`
 --
 
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE `comment` (
-  `comment_id` int(10) UNSIGNED NOT NULL,
-  `comment_subject` varchar(255) COLLATE utf32_bin NOT NULL,
-  `comment_text` text COLLATE utf32_bin NOT NULL,
-  `comment_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `comment_author` varchar(255) COLLATE utf32_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
-
---
--- Dumping data for table `comment`
---
-
-INSERT INTO `comment` (`comment_id`, `comment_subject`, `comment_text`, `comment_created`, `comment_author`) VALUES
-(1, 'Tubli töö', 'Mina arvan nii ja kõik nõustuvad minuga', '2018-06-08 11:49:49', 'Musti'),
-(2, 'Mõtetu kraam', 'Aga ikkagi päris hea töö', '2018-06-08 11:50:10', 'Kalle Gustav'),
-(3, 'Kolm on kohtu seadus', 'Ja see ongi kolmas kommentaar', '2018-06-08 11:50:38', 'Kolmas');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `post`
---
-
-DROP TABLE IF EXISTS `post`;
-CREATE TABLE `post` (
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE `posts` (
   `post_id` int(10) UNSIGNED NOT NULL,
-  `post_subject` varchar(255) NOT NULL,
-  `post_text` text NOT NULL,
+  `post_subject` varchar(225) CHARACTER SET latin1 NOT NULL,
+  `post_text` text CHARACTER SET latin1 NOT NULL,
   `post_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `post`
+-- Andmete tõmmistamine tabelile `posts`
 --
 
-INSERT INTO `post` (`post_id`, `post_subject`, `post_text`, `post_created`, `user_id`) VALUES
-(1, 'Esimene postitus', 'This is my very first post. I wonder if this will work after my git reset --hard XD.\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2018-06-07 19:18:52', 1),
-(2, 'Teine postitus', 'Ja see on mu teine postitus.\r\n\r\nVaatame, kas tuleb sappa?\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2018-06-07 12:10:25', 2),
-(3, 'Kolmas postitus', 'Kolmas katsetus tagide testimiseks', '2018-06-07 19:24:04', 2);
+INSERT INTO `posts` (`post_id`, `post_subject`, `post_text`, `post_created`, `user_id`) VALUES
+(0, 'Teine postitus', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\nWhy do we use it?\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2018-06-08 07:45:49', 1),
+(1, 'Esimene postitus', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\nWhy do we use it?\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2018-06-08 07:45:15', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_comments`
---
-
-DROP TABLE IF EXISTS `post_comments`;
-CREATE TABLE `post_comments` (
-  `post_id` int(10) UNSIGNED NOT NULL,
-  `comment_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
-
---
--- Dumping data for table `post_comments`
---
-
-INSERT INTO `post_comments` (`post_id`, `comment_id`) VALUES
-(1, 2),
-(1, 1),
-(3, 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `post_tags`
+-- Tabeli struktuur tabelile `post_tags`
 --
 
 DROP TABLE IF EXISTS `post_tags`;
 CREATE TABLE `post_tags` (
   `post_id` int(11) UNSIGNED NOT NULL,
-  `tag_id` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `post_tags`
---
-
-INSERT INTO `post_tags` (`post_id`, `tag_id`) VALUES
-(1, 1),
-(1, 2),
-(2, 3),
-(3, 1);
+  `ta_id` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tag`
+-- Tabeli struktuur tabelile `tag`
 --
 
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
   `tag_id` int(10) UNSIGNED NOT NULL,
-  `tag_name` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tag`
---
-
-INSERT INTO `tag` (`tag_id`, `tag_name`) VALUES
-(1, 'lorem'),
-(2, 'esimese postituse tag'),
-(3, 'teise postituse tag');
+  `tag_name` varchar(25) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `translations`
+-- Tabeli struktuur tabelile `translations`
 --
 
 DROP TABLE IF EXISTS `translations`;
@@ -146,7 +81,7 @@ CREATE TABLE `translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `translations`
+-- Andmete tõmmistamine tabelile `translations`
 --
 
 INSERT INTO `translations` (`translation_id`, `phrase`, `language`, `translation`, `controller`, `action`) VALUES
@@ -168,17 +103,18 @@ INSERT INTO `translations` (`translation_id`, `phrase`, `language`, `translation
 (16, 'Email', 'et', '{untranslated}', 'global', 'global'),
 (17, 'Password', 'et', '{untranslated}', 'global', 'global'),
 (18, 'Sign in', 'et', '{untranslated}', 'global', 'global'),
-(19, 'Oops...', 'et', '{untranslated}', 'global', 'global'),
-(20, 'Close', 'et', '{untranslated}', 'global', 'global'),
-(21, 'Server returned an error. Please try again later ', 'et', '{untranslated}', 'global', 'global'),
-(22, 'Oops...', 'en', '{untranslated}', 'global', 'global'),
-(23, 'Close', 'en', '{untranslated}', 'global', 'global'),
-(24, 'Server returned an error. Please try again later ', 'en', '{untranslated}', 'global', 'global');
+(19, 'Please sign in', 'en', '{untranslated}', 'global', 'global'),
+(20, 'Email', 'en', '{untranslated}', 'global', 'global'),
+(21, 'Password', 'en', '{untranslated}', 'global', 'global'),
+(22, 'Sign in', 'en', '{untranslated}', 'global', 'global'),
+(23, 'Oops...', 'en', '{untranslated}', 'global', 'global'),
+(24, 'Close', 'en', '{untranslated}', 'global', 'global'),
+(25, 'Server returned an error. Please try again later ', 'en', '{untranslated}', 'global', 'global');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabeli struktuur tabelile `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -192,119 +128,85 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Andmete tõmmistamine tabelile `users`
 --
 
 INSERT INTO `users` (`user_id`, `is_admin`, `password`, `email`, `deleted`, `name`) VALUES
-(1, 1, '$2y$10$vTje.ndUFKHyuotY99iYkO.2aHJUgOsy2x0RMXP1UmrTe6CQsKbtm', 'demo@example.com', 0, 'Demo User'),
-(2, 0, 'qwerty', 'king@king.ee', 0, 'Kong');
+(1, 1, '$2y$10$vTje.ndUFKHyuotY99iYkO.2aHJUgOsy2x0RMXP1UmrTe6CQsKbtm', 'demo@example.com', 0, 'Demo User');
 
 --
--- Indexes for dumped tables
+-- Indeksid tõmmistatud tabelitele
 --
 
 --
--- Indexes for table `comment`
+-- Indeksid tabelile `posts`
 --
-ALTER TABLE `comment`
-  ADD PRIMARY KEY (`comment_id`);
-
---
--- Indexes for table `post`
---
-ALTER TABLE `post`
+ALTER TABLE `posts`
   ADD PRIMARY KEY (`post_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `post_comments`
---
-ALTER TABLE `post_comments`
-  ADD KEY `comment_id` (`comment_id`),
-  ADD KEY `post_id` (`post_id`);
-
---
--- Indexes for table `post_tags`
+-- Indeksid tabelile `post_tags`
 --
 ALTER TABLE `post_tags`
-  ADD PRIMARY KEY (`post_id`,`tag_id`),
-  ADD KEY `tag_id` (`tag_id`);
+  ADD PRIMARY KEY (`post_id`,`ta_id`) USING BTREE,
+  ADD UNIQUE KEY `tag_id` (`ta_id`);
 
 --
--- Indexes for table `tag`
+-- Indeksid tabelile `tag`
 --
 ALTER TABLE `tag`
   ADD PRIMARY KEY (`tag_id`);
 
 --
--- Indexes for table `translations`
+-- Indeksid tabelile `translations`
 --
 ALTER TABLE `translations`
   ADD PRIMARY KEY (`translation_id`),
   ADD UNIQUE KEY `language_phrase_controller_action_index` (`language`,`phrase`,`controller`,`action`);
 
 --
--- Indexes for table `users`
+-- Indeksid tabelile `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT tõmmistatud tabelitele
 --
 
 --
--- AUTO_INCREMENT for table `comment`
+-- AUTO_INCREMENT tabelile `posts`
 --
-ALTER TABLE `comment`
-  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `post`
---
-ALTER TABLE `post`
+ALTER TABLE `posts`
   MODIFY `post_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tag`
+-- AUTO_INCREMENT tabelile `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `tag_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tag_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `translations`
+-- AUTO_INCREMENT tabelile `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `translation_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `translation_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT tabelile `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Constraints for dumped tables
+-- Tõmmistatud tabelite piirangud
 --
 
 --
--- Constraints for table `post`
+-- Piirangud tabelile `posts`
 --
-ALTER TABLE `post`
-  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
-
---
--- Constraints for table `post_comments`
---
-ALTER TABLE `post_comments`
-  ADD CONSTRAINT `post_comments_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`comment_id`),
-  ADD CONSTRAINT `post_comments_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
-
---
--- Constraints for table `post_tags`
---
-ALTER TABLE `post_tags`
-  ADD CONSTRAINT `post_tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
-  ADD CONSTRAINT `post_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`tag_id`);
+ALTER TABLE `posts`
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;

@@ -1,5 +1,4 @@
 <div class="span8">
-    <a href="<?=BASE_URL?>tags/">Tagasi...</a>
     <?php foreach($posts as $post): ?>
         <h1><a href="<?=BASE_URL?>posts/view/<?=$post['post_id']?>"><?=$post['post_subject'] ?></a></h1>
         <p><?= $post['post_text'] ?></p>
