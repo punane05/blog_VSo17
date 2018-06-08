@@ -5,6 +5,7 @@
     <p><?php echo $post['post_text'] ?></p>
     <div>
         <u class="list-inline list unstyled" style="text-decoration: none;">
+            <hr>
             <li><span><i class="glyphicon glyphicon-calendar"></i><?php echo $post['post_created'] ?></span></li>
             <li>|</li>
             <?php foreach ($tags as $tag):?>
