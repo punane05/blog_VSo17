@@ -11,3 +11,8 @@ table.clickable-rows tr:hover {
 a {
     cursor: pointer;
 }
+
+h1 {
+    color: dodgerblue;
+    font-weight: bold;
+}
